@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ace Plus Consultancy — Helping Businesses Grow Through Marketing, HR, Services & Outsourcing." />
+  <title>Ace Plus Consultancy</title>
+
+  <link rel="icon" type="image/webp" href="./src/images/ace-plus-circle.png" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            display: ['Manrope', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            gold: {
+              300: '#F8D982',
+              400: '#F4C95D',
+              500: '#DDAA32',
+              600: '#B88618'
+            }
+          },
+          boxShadow: {
+            gold: '0 20px 60px rgba(221,170,50,.14)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, sans-serif; }
+    .display { font-family: Manrope, Inter, sans-serif; }
+    .gold-gradient {
+      background: linear-gradient(135deg, #fff4c9 0%, #f4c95d 35%, #c58b17 72%, #ffe8a0 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .gold-line {
+      background: linear-gradient(90deg, transparent, #dbaa38, transparent);
+    }
+    .grid-fade {
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, black, transparent);
+    }
+    .light .grid-fade {
+      background-image:
+        linear-gradient(rgba(15,23,42,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15,23,42,.045) 1px, transparent 1px);
+    }
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 0;
+      height: 1.5px;
+      background: #e0b43e;
+      transition: width .25s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+  </style>
+</head>
+
+<body class="bg-[#090a0d] text-white antialiased transition-colors duration-300 dark:bg-[#090a0d] light:bg-[#f7f7f5] light:text-slate-900">
+
+  <!-- Header -->
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#090a0d]/80 backdrop-blur-xl light:border-slate-900/10 light:bg-white/80">
+    <div class="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-10">
+      <a href="#home" class="flex items-center gap-3" aria-label="Ace Plus Consultancy home">
+        <img src="./src/images/ace-plus-logo.webp" alt="Ace Plus Consultancy logo" class="h-11 w-11 rounded-full object-cover ring-1 ring-white/15">
+        <div class="hidden sm:block">
+          <p class="display text-[15px] font-bold tracking-[.18em]">ACE PLUS</p>
+          <p class="-mt-0.5 text-[9px] tracking-[.35em] text-gold-400">CONSULTANCY</p>
+        </div>
+      </a>
+
+      <nav class="hidden items-center gap-8 md:flex">
+        <a href="#home" class="nav-link text-sm text-white/75 hover:text-white light:text-slate-700 light:hover:text-slate-950">Home</a>
+        <a href="#about" class="nav-link text-sm text-white/75 hover:text-white light:text-slate-700 light:hover:text-slate-950">About Us</a>
+        <a href="#services" class="nav-link text-sm text-white/75 hover:text-white light:text-slate-700 light:hover:text-slate-950">Our Services</a>
+        <a href="#why-us" class="nav-link text-sm text-white/75 hover:text-white light:text-slate-700 light:hover:text-slate-950">Why Choose Us</a>
+        <a href="#contact" class="nav-link text-sm text-white/75 hover:text-white light:text-slate-700 light:hover:text-slate-950">Contact Us</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <!-- <button id="themeToggle" type="button" aria-label="Toggle theme"
+          class="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-white/80 transition hover:border-gold-400/40 hover:text-gold-300 light:border-slate-900/10 light:bg-slate-900/5 light:text-slate-700">
+          <svg id="sunIcon" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+            <circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+          </svg>
+          <svg id="moonIcon" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+            <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.7 6.7 0 0 0 21 12.8Z"/>
+          </svg>
+        </button> -->
+
+        <a href="#contact" class="hidden rounded-full bg-gradient-to-r from-[#f8dc83] via-[#dda832] to-[#a97510] px-5 py-2.5 text-sm font-semibold text-black shadow-gold transition hover:-translate-y-0.5 sm:block">
+          Talk to Us
+        </a>
+
+        <button id="menuButton" type="button" aria-label="Open menu" aria-expanded="false"
+          class="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 md:hidden light:border-slate-900/10 light:bg-slate-900/5">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+            <path d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden border-t border-white/10 bg-[#090a0d]/95 px-5 py-5 backdrop-blur-xl md:hidden light:border-slate-900/10 light:bg-white/95">
+      <div class="flex flex-col gap-4">
+        <a href="#home" class="mobile-link text-sm">Home</a>
+        <a href="#about" class="mobile-link text-sm">About Us</a>
+        <a href="#services" class="mobile-link text-sm">Our Services</a>
+        <a href="#why-us" class="mobile-link text-sm">Why Choose Us</a>
+        <a href="#contact" class="mobile-link text-sm">Contact Us</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="home" class="relative isolate overflow-hidden pt-32 sm:pt-40">
+      <div class="pointer-events-none absolute inset-0 grid-fade"></div>
+      <div class="pointer-events-none absolute left-1/2 top-20 -z-10 h-96 w-96 -translate-x-1/2 rounded-full bg-[#dbaa38]/10 blur-[120px]"></div>
+
+      <div class="mx-auto grid max-w-7xl items-center gap-14 px-5 pb-24 sm:px-8 lg:grid-cols-[1.15fr_.85fr] lg:px-10 lg:pb-32">
+        <div>
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-gold-400/20 bg-gold-400/5 px-3.5 py-2 text-xs font-medium tracking-wide text-gold-300">
+            <span class="h-1.5 w-1.5 rounded-full bg-gold-400"></span>
+            Business Consultancy
+          </div>
+
+          <h1 class="display max-w-4xl text-4xl font-extrabold leading-[1.08] tracking-[-.045em] sm:text-6xl lg:text-7xl">
+            Helping Businesses
+            <span class="gold-gradient">Grow.</span>
+          </h1>
+
+          <p class="mt-7 max-w-2xl text-base leading-8 text-white/60 sm:text-lg light:text-slate-600">
+            Helping Businesses Grow Through Marketing, HR, Services &amp; Outsourcing.
+          </p>
+
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href="#contact" class="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#f8dc83] via-[#dda832] to-[#a97510] px-6 py-3.5 text-sm font-semibold text-black shadow-gold transition hover:-translate-y-0.5">
+              Get in Touch
+              <span aria-hidden="true">→</span>
+            </a>
+            <a href="#services" class="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[.03] px-6 py-3.5 text-sm font-medium text-white/80 transition hover:border-gold-400/30 hover:text-white light:border-slate-900/10 light:bg-slate-900/[.03] light:text-slate-700">
+              Explore Services
+            </a>
+          </div>
+        </div>
+
+        <div class="relative mx-auto w-full max-w-md lg:ml-auto">
+          <div class="absolute -inset-5 rounded-[2rem] bg-[#dbaa38]/10 blur-2xl"></div>
+          <div class="relative overflow-hidden rounded-[1.7rem] border border-white/10 bg-[#0d0f13] p-2 shadow-2xl light:border-slate-900/10 light:bg-white">
+            <img src="./src/images/ace-plus-logo.webp" alt="Ace Plus Consultancy" class="h-auto w-full rounded-[1.25rem] object-cover">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="border-y border-white/10 bg-white/[.025] light:border-slate-900/10 light:bg-slate-900/[.025]">
+      <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+        <div class="grid gap-12 lg:grid-cols-[.7fr_1.3fr] lg:items-start">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[.25em] text-gold-400">About Us</p>
+            <h2 class="display mt-4 text-3xl font-bold tracking-[-.035em] sm:text-4xl">Business support built around growth.</h2>
+          </div>
+          <div class="max-w-3xl">
+            <p class="text-lg leading-8 text-white/65 light:text-slate-600">
+              We help other businesses grow. We provide marketing and sales support, HR and manpower-related services, outsourcing solutions, and help companies improve their business processes and overall growth.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+      <div class="max-w-2xl">
+        <p class="text-xs font-semibold uppercase tracking-[.25em] text-gold-400">Our Services</p>
+        <h2 class="display mt-4 text-3xl font-bold tracking-[-.035em] sm:text-4xl">What We Do</h2>
+        <p class="mt-4 text-base leading-7 text-white/55 light:text-slate-600">
+          Business consultancy and support across marketing, HR, sales, services and outsourcing.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <article class="group rounded-2xl border border-white/10 bg-white/[.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-gold-400/30 hover:bg-white/[.055] light:border-slate-900/10 light:bg-white light:hover:border-gold-400/40">
+          <div class="mb-12 grid h-10 w-10 place-items-center rounded-xl border border-gold-400/20 bg-gold-400/5 text-sm font-semibold text-gold-300">01</div>
+          <h3 class="display text-lg font-bold">Business Consultancy</h3>
+        </article>
+
+        <article class="group rounded-2xl border border-white/10 bg-white/[.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-gold-400/30 hover:bg-white/[.055] light:border-slate-900/10 light:bg-white light:hover:border-gold-400/40">
+          <div class="mb-12 grid h-10 w-10 place-items-center rounded-xl border border-gold-400/20 bg-gold-400/5 text-sm font-semibold text-gold-300">02</div>
+          <h3 class="display text-lg font-bold">Marketing Services</h3>
+        </article>
+
+        <article class="group rounded-2xl border border-white/10 bg-white/[.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-gold-400/30 hover:bg-white/[.055] light:border-slate-900/10 light:bg-white light:hover:border-gold-400/40">
+          <div class="mb-12 grid h-10 w-10 place-items-center rounded-xl border border-gold-400/20 bg-gold-400/5 text-sm font-semibold text-gold-300">03</div>
+          <h3 class="display text-lg font-bold">HR Services</h3>
+        </article>
+
+        <article class="group rounded-2xl border border-white/10 bg-white/[.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-gold-400/30 hover:bg-white/[.055] light:border-slate-900/10 light:bg-white light:hover:border-gold-400/40">
+          <div class="mb-12 grid h-10 w-10 place-items-center rounded-xl border border-gold-400/20 bg-gold-400/5 text-sm font-semibold text-gold-300">04</div>
+          <h3 class="display text-lg font-bold">Sales &amp; Business Development</h3>
+        </article>
+
+        <article class="group rounded-2xl border border-white/10 bg-white/[.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-gold-400/30 hover:bg-white/[.055] light:border-slate-900/10 light:bg-white light:hover:border-gold-400/40">
+          <div class="mb-12 grid h-10 w-10 place-items-center rounded-xl border border-gold-400/20 bg-gold-400/5 text-sm font-semibold text-gold-300">05</div>
+          <h3 class="display text-lg font-bold">Business Outsourcing</h3>
+        </article>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us" class="border-y border-white/10 bg-white/[.025] light:border-slate-900/10 light:bg-slate-900/[.025]">
+      <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+        <div class="grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[.25em] text-gold-400">Why Choose Us</p>
+            <h2 class="display mt-4 text-3xl font-bold tracking-[-.035em] sm:text-4xl">Support that helps businesses move forward.</h2>
+          </div>
+
+          <div class="grid gap-3 sm:grid-cols-2">
+            <div class="rounded-2xl border border-white/10 p-6 light:border-slate-900/10">
+              <p class="text-sm leading-7 text-white/65 light:text-slate-600">We help other businesses grow.</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 p-6 light:border-slate-900/10">
+              <p class="text-sm leading-7 text-white/65 light:text-slate-600">We provide marketing and sales support.</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 p-6 light:border-slate-900/10">
+              <p class="text-sm leading-7 text-white/65 light:text-slate-600">We provide HR and manpower-related services.</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 p-6 light:border-slate-900/10">
+              <p class="text-sm leading-7 text-white/65 light:text-slate-600">We provide outsourcing solutions to businesses.</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 p-6 sm:col-span-2 light:border-slate-900/10">
+              <p class="text-sm leading-7 text-white/65 light:text-slate-600">We help companies improve their business processes and overall growth.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Packages -->
+    <section id="packages" class="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+      <div class="text-center">
+        <p class="text-xs font-semibold uppercase tracking-[.25em] text-gold-400">Packages</p>
+        <h2 class="display mt-4 text-3xl font-bold tracking-[-.035em] sm:text-4xl">Choose a package</h2>
+      </div>
+
+      <div class="mx-auto mt-12 grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-2xl border border-white/10 bg-white/[.035] p-6 light:border-slate-900/10 light:bg-white">
+          <p class="text-sm text-white/50 light:text-slate-500">Monthly</p>
+          <p class="display mt-3 text-3xl font-bold">₹25,000</p>
+        </div>
+        <div class="rounded-2xl border border-gold-400/30 bg-gold-400/[.06] p-6 shadow-gold">
+          <p class="text-sm text-gold-300">Quarterly</p>
+          <p class="display mt-3 text-3xl font-bold">₹62,000</p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/[.035] p-6 light:border-slate-900/10 light:bg-white">
+          <p class="text-sm text-white/50 light:text-slate-500">Half Yearly</p>
+          <p class="display mt-3 text-3xl font-bold">₹1,06,000</p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/[.035] p-6 light:border-slate-900/10 light:bg-white">
+          <p class="text-sm text-white/50 light:text-slate-500">Yearly</p>
+          <p class="display mt-3 text-3xl font-bold">₹1,91,000</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="px-5 pb-20 sm:px-8 lg:px-10 lg:pb-28">
+      <div class="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-white/10 bg-[#0e1014] light:border-slate-900/10 light:bg-slate-900">
+        <div class="grid lg:grid-cols-[1.1fr_.9fr]">
+          <div class="relative p-8 sm:p-12 lg:p-16">
+            <div class="pointer-events-none absolute -left-20 -top-20 h-64 w-64 rounded-full bg-gold-400/10 blur-3xl"></div>
+            <p class="relative text-xs font-semibold uppercase tracking-[.25em] text-gold-300">Contact Us</p>
+            <h2 class="display relative mt-4 max-w-xl text-3xl font-bold tracking-[-.035em] text-white sm:text-4xl">Talk to Us</h2>
+            <p class="relative mt-5 max-w-xl leading-7 text-white/55">
+              Get in touch with Ace Plus Consultancy.
+            </p>
+            <a href="mailto:aceplusconsultancy@gmail.com" class="relative mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#f8dc83] via-[#dda832] to-[#a97510] px-6 py-3.5 text-sm font-semibold text-black transition hover:-translate-y-0.5">
+              Get in Touch <span aria-hidden="true">→</span>
+            </a>
+          </div>
+
+          <div class="border-t border-white/10 p-8 sm:p-12 lg:border-l lg:border-t-0 lg:p-16">
+            <div class="space-y-7">
+              <div>
+                <p class="text-xs uppercase tracking-[.2em] text-white/35">Contact Number</p>
+                <a href="tel:+917992429462" class="mt-2 block text-lg font-medium text-white hover:text-gold-300">+91 7992429462</a>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-[.2em] text-white/35">Email</p>
+                <a href="mailto:aceplusconsultancy@gmail.com" class="mt-2 block break-all text-lg font-medium text-white hover:text-gold-300">aceplusconsultancy@gmail.com</a>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-[.2em] text-white/35">GST</p>
+                <p class="mt-2 text-lg font-medium text-white">29BYHPP0670H2Z4</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 light:border-slate-900/10">
+    <div class="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-8 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-10">
+      <div class="flex items-center gap-3">
+        <img src="./src/images/ace-plus-logo.webp" alt="" class="h-9 w-9 rounded-full object-cover">
+        <div>
+          <p class="display text-sm font-bold tracking-[.15em]">ACE PLUS</p>
+          <p class="text-[8px] tracking-[.3em] text-gold-400">CONSULTANCY</p>
+        </div>
+      </div>
+      <p class="text-xs text-white/35 light:text-slate-500">Helping Businesses Grow Through Marketing, HR, Services &amp; Outsourcing.</p>
+    </div>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
+    const menuButton = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    const savedTheme = localStorage.getItem('ace-theme');
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    const isLight = savedTheme ? savedTheme === 'light' : prefersLight;
+
+    function setTheme(light) {
+      root.classList.toggle('light', light);
+      root.classList.toggle('dark', !light);
+      sunIcon.classList.toggle('hidden', !light);
+      moonIcon.classList.toggle('hidden', light);
+      localStorage.setItem('ace-theme', light ? 'light' : 'dark');
+    }
+
+    setTheme(isLight);
+
+    themeToggle.addEventListener('click', () => {
+      setTheme(!root.classList.contains('light'));
+    });
+
+    menuButton.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden', isOpen);
+      menuButton.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuButton.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+</html>
